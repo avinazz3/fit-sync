@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, History, Settings, Users, Compass } from "lucide-react";
+import { LayoutDashboard, History, Settings, Users, MapPin } from "lucide-react";
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -11,7 +11,7 @@ const navItems = [
   { path: "/history", label: "History", icon: History },
   { path: "/settings", label: "Settings", icon: Settings },
   { path: "/community", label: "Community", icon: Users },
-  { path: "/explore", label: "Explore", icon: Compass },
+  { path: "/explore", label: "Gym Finder", icon: MapPin },
 ];
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {

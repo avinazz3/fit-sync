@@ -16,6 +16,7 @@ const Login = lazy(() => import("./pages/Login.tsx"));
 const Logout = lazy(() => import("./pages/Logout.tsx"));
 const OnboardingPage = lazy(() => import("./pages/OnboardingPage.tsx"));
 const ProgressPage = lazy(() => import("./pages/ProgressPage.tsx"));
+const HistoryPage = lazy(() => import("./pages/HistoryPage.tsx"));
 const SelectDurationPage = lazy(() => import("./pages/SelectDurationPage.tsx"));
 const SelectGymPage = lazy(() => import("./pages/SelectGymPage.tsx"));
 const UserProfilePage = lazy(() => import("./pages/UserProfilePage.tsx"));
@@ -63,9 +64,9 @@ export const userRoutes: RouteObject[] = [
 	{ path: "/workoutrecommendationpage", element: <UserGuard><MainLayout><WorkoutRecommendationPage /></MainLayout></UserGuard>},
 
 	// New pages for the navbar items
-	{ path: "/history", element: <UserGuard><MainLayout><DashboardPage /></MainLayout></UserGuard>}, // Placeholder for History page
+	{ path: "/history", element: <UserGuard><MainLayout><HistoryPage /></MainLayout></UserGuard>},
 	{ path: "/settings", element: <UserGuard><MainLayout><UserProfilePage /></MainLayout></UserGuard>}, // Using UserProfile as placeholder for settings
 	{ path: "/community", element: <UserGuard><MainLayout><DashboardPage /></MainLayout></UserGuard>}, // Placeholder for Community page
-	{ path: "/explore", element: <UserGuard><MainLayout><GymFinderPage /></MainLayout></UserGuard>}, // Using GymFinder as placeholder for explore
+	{ path: "/explore", element: <UserGuard><MainLayout><Suspense fallback={<div className="flex items-center justify-center h-full p-8"><div className="text-center"><div className="animate-spin h-8 w-8 border-4 border-purple-500 border-t-transparent rounded-full mx-auto mb-4"></div><p className="text-gray-600">Loading Gym Finder...</p></div></div>}><GymFinderPage /></Suspense></MainLayout></UserGuard>},
 
 ];
