@@ -1,0 +1,7 @@
+vite
+typescript
+react
+react-dom
+react-router-dom
+lucide-react
+tailwindcss

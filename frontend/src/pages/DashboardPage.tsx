@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Activity, BarChart, TrendingUp } from "lucide-react";
-import MainLayout from "components/MainLayout"; 
 import { useNavigate } from "react-router-dom";
 
 const DashboardPage = () => {
@@ -16,18 +15,17 @@ const DashboardPage = () => {
   const modelUrl = "https://static.databutton.com/public/b9d6f579-db1c-4766-b9ed-7f49f3824576/3d_model.glb";
 
   return (
-    <MainLayout>
-      <div className="container mx-auto p-4 md:p-6 lg:p-8">
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground">Welcome Back, {userName}!</h1>
-          <p className="text-lg text-muted-foreground">Here’s your fitness dashboard.</p>
-        </header>
+    <div className="container mx-auto p-4 md:p-6 lg:p-8">
+      <header className="mb-8">
+        <h1 className="text-4xl font-bold text-foreground">Welcome Back, {userName}!</h1>
+        <p className="text-lg text-muted-foreground">Here’s your fitness dashboard.</p>
+      </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="shadow-lg">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Calories</CardTitle>
-              <Activity className="h-4 w-4 text-muted-foreground" />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <Card className="shadow-lg">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Active Calories</CardTitle>
+            <Activity className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">+2,350</div>
@@ -83,8 +81,7 @@ const DashboardPage = () => {
           </Button>
         </div>
 
-      </div>
-    </MainLayout>
+    </div>
   );
 };
 

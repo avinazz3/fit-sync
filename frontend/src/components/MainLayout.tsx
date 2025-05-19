@@ -7,7 +7,7 @@ interface MainLayoutProps {
 }
 
 const navItems = [
-  { path: "/", label: "Dashboard", icon: LayoutDashboard },
+  { path: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { path: "/history", label: "History", icon: History },
   { path: "/settings", label: "Settings", icon: Settings },
   { path: "/community", label: "Community", icon: Users },
@@ -22,7 +22,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       {/* Global header */}
       <header className="bg-white shadow-sm p-4 hidden md:block sticky top-0 z-40 border-b border-gray-200">
         <div className="container mx-auto flex justify-between items-center h-10">
-          <Link to="/" className="text-2xl font-bold text-purple-700 hover:text-purple-800 transition-colors">
+          <Link to="/dashboard" className="text-2xl font-bold text-purple-700 hover:text-purple-800 transition-colors">
             FitSync
           </Link>
           <div>

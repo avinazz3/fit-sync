@@ -114,7 +114,7 @@
     "@suiet/wallet-kit": "0.3.3",
     "@supabase/auth-ui-react": "0.4.7",
     "@supabase/auth-ui-shared": "0.1.8",
-    "@supabase/supabase-js": "2.47.3",
+    "@supabase/supabase-js": "^2.49.5",
     "@tailwindcss/typography": "0.5.10",
     "@talkjs/react": "0.1.11",
     "@tanstack/react-query": "5.61.4",
@@ -327,6 +327,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
+    "@firebase/app": "^0.11.1",
     "@sentry/react": "7.101.1",
     "@sentry/types": "7.101.1",
     "@types/amplitude-js": "^8",
@@ -353,6 +354,7 @@
     "@types/reveal.js": "^5",
     "@types/three": "^0",
     "@types/vinyl-fs": "^3",
+    "@vitejs/plugin-react": "^4.0.0",
     "@vitejs/plugin-react-swc": "3.3.2",
     "autoprefixer": "^10.4.20",
     "dotenv": "16.4.5",
@@ -369,9 +371,7 @@
     "typescript": "5.2.2",
     "typescript-language-server": "4.3.2",
     "vite": "4.4.5",
-    "vite-tsconfig-paths": "4.2.2",
-    "@vitejs/plugin-react": "^4.0.0",
-    "@firebase/app": "^0.11.1"
+    "vite-tsconfig-paths": "4.2.2"
   },
   "packageManager": "yarn@4.0.2",
   "nodeLinker": "pnpm"

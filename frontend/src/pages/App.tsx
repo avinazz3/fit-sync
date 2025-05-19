@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart, Zap, Users, MoveRight, Target, ShieldCheck, Bot } from "lucide-react";
 
@@ -18,9 +19,13 @@ export default function App() {
             <a href="#pricing" className="transition-colors hover:text-primary">Pricing</a>
           </nav>
           <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="sm">Log In</Button>
-            <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">
-              Sign Up <MoveRight className="ml-2 h-4 w-4" />
+            <Button variant="ghost" size="sm" asChild>
+              <Link to="/login">Log In</Link>
+            </Button>
+            <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full" asChild>
+              <Link to="/login?signup=true">
+                Sign Up <MoveRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>
@@ -38,13 +43,17 @@ export default function App() {
               Wellnash crafts unique workout plans tailored to your goals, injuries, and available gym equipment. Experience the future of fitness, intelligently designed for you.
             </p>
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-              <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-base px-8 py-6 group">
-                Get Your Smart Workout Plan
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-base px-8 py-6 group" asChild>
+                <Link to="/login">
+                  Get Your Smart Workout Plan
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
               </Button>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full text-base px-8 py-6 group">
-                Learn More
-                <MoveRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              <Button variant="outline" size="lg" className="w-full sm:w-auto rounded-full text-base px-8 py-6 group" asChild>
+                <Link to="#features">
+                  Learn More
+                  <MoveRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Link>
               </Button>
             </div>
           </div>
@@ -122,8 +131,10 @@ export default function App() {
                     <span>Understand how your workouts impact your body.</span>
                   </li>
                 </ul>
-                <Button variant="outline" className="rounded-full group">
-                  Explore the Body Model <MoveRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <Button variant="outline" className="rounded-full group" asChild>
+                  <Link to="/login">
+                    Explore the Body Model <MoveRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
                 </Button>
               </div>
             </div>
@@ -138,9 +149,11 @@ export default function App() {
               Join Wellnash today and get workout plans that are as unique as you are.
               It's time to train smarter, not just harder.
             </p>
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-base px-10 py-6 group">
-              Start Your Free Trial
-              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full text-base px-10 py-6 group" asChild>
+              <Link to="/login">
+                Start Your Free Trial
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
           </div>
         </section>
