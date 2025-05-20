@@ -6,6 +6,16 @@ import { RouteObject } from "react-router";
 import { UserGuard } from "app";
 import MainLayout from "./components/MainLayout";
 
+// Shared loading component for all routes
+const LoadingFallback = () => (
+  <div className="flex items-center justify-center h-full p-8">
+    <div className="text-center">
+      <div className="animate-spin h-8 w-8 border-4 border-purple-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+      <p className="text-gray-600">Loading...</p>
+    </div>
+  </div>
+);
+
 
 const ActiveWorkoutPage = lazy(() => import("./pages/ActiveWorkoutPage.tsx"));
 const App = lazy(() => import("./pages/App.tsx"));
@@ -24,49 +34,48 @@ const WorkoutDetailsPage = lazy(() => import("./pages/WorkoutDetailsPage.tsx"));
 const WorkoutRecommendationPage = lazy(() => import("./pages/WorkoutRecommendationPage.tsx"));
 
 export const userRoutes: RouteObject[] = [
-	// Landing and onboarding pages (no layout)
-	{ path: "/app", element: <App />},
-	{ path: "/onboarding-page", element: <UserGuard><OnboardingPage /></UserGuard>},
-	{ path: "/onboardingpage", element: <UserGuard><OnboardingPage /></UserGuard>},
-	{ path: "/login", element: <Suspense fallback={<div className="flex items-center justify-center h-screen">Loading...</div>}><Login /></Suspense>},
+  // Landing and onboarding pages (no layout)
+  { path: "/app", element: <Suspense fallback={<LoadingFallback />}><App /></Suspense> },
+  { path: "/onboarding-page", element: <UserGuard><Suspense fallback={<LoadingFallback />}><OnboardingPage /></Suspense></UserGuard> },
+  { path: "/onboardingpage", element: <UserGuard><Suspense fallback={<LoadingFallback />}><OnboardingPage /></Suspense></UserGuard> },
+  { path: "/login", element: <Suspense fallback={<LoadingFallback />}><Login /></Suspense> },
 
-	// Landing page (no authentication required)
-	{ 
-		path: "/", 
-		element: (
-			<Suspense fallback={<div className="flex items-center justify-center h-screen"><div className="text-center"><div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div><p className="mt-2">Loading...</p></div></div>}>
-				<App />
-			</Suspense>
-		),
-		errorElement: <div className="flex items-center justify-center h-screen"><div className="text-center"><h2 className="text-2xl font-bold">Something went wrong</h2><p className="mt-2">We couldn't load the landing page. Please try again.</p></div></div>
-	},
-	{ path: "/dashboard", element: <UserGuard><MainLayout><DashboardPage /></MainLayout></UserGuard>},
-	{ path: "/active-workout-page", element: <UserGuard><MainLayout><ActiveWorkoutPage /></MainLayout></UserGuard>},
-	{ path: "/activeworkoutpage", element: <UserGuard><MainLayout><ActiveWorkoutPage /></MainLayout></UserGuard>},
-	{ path: "/dashboard-page", element: <UserGuard><MainLayout><DashboardPage /></MainLayout></UserGuard>},
-	{ path: "/dashboardpage", element: <UserGuard><MainLayout><DashboardPage /></MainLayout></UserGuard>},
-	{ path: "/generating-workout-screen", element: <UserGuard><MainLayout><GeneratingWorkoutScreen /></MainLayout></UserGuard>},
-	{ path: "/generatingworkoutscreen", element: <UserGuard><MainLayout><GeneratingWorkoutScreen /></MainLayout></UserGuard>},
-	{ path: "/gym-finder-page", element: <UserGuard><MainLayout><GymFinderPage /></MainLayout></UserGuard>},
-	{ path: "/gymfinderpage", element: <UserGuard><MainLayout><GymFinderPage /></MainLayout></UserGuard>},
-	{ path: "/logout", element: <UserGuard><MainLayout><Logout /></MainLayout></UserGuard>},
-	{ path: "/progress-page", element: <UserGuard><MainLayout><ProgressPage /></MainLayout></UserGuard>},
-	{ path: "/progresspage", element: <UserGuard><MainLayout><ProgressPage /></MainLayout></UserGuard>},
-	{ path: "/select-duration-page", element: <UserGuard><MainLayout><SelectDurationPage /></MainLayout></UserGuard>},
-	{ path: "/selectdurationpage", element: <UserGuard><MainLayout><SelectDurationPage /></MainLayout></UserGuard>},
-	{ path: "/select-gym-page", element: <UserGuard><MainLayout><SelectGymPage /></MainLayout></UserGuard>},
-	{ path: "/selectgympage", element: <UserGuard><MainLayout><SelectGymPage /></MainLayout></UserGuard>},
-	{ path: "/user-profile-page", element: <UserGuard><MainLayout><UserProfilePage /></MainLayout></UserGuard>},
-	{ path: "/userprofilepage", element: <UserGuard><MainLayout><UserProfilePage /></MainLayout></UserGuard>},
-	{ path: "/workout-details-page", element: <UserGuard><MainLayout><WorkoutDetailsPage /></MainLayout></UserGuard>},
-	{ path: "/workoutdetailspage", element: <UserGuard><MainLayout><WorkoutDetailsPage /></MainLayout></UserGuard>},
-	{ path: "/workout-recommendation-page", element: <UserGuard><MainLayout><WorkoutRecommendationPage /></MainLayout></UserGuard>},
-	{ path: "/workoutrecommendationpage", element: <UserGuard><MainLayout><WorkoutRecommendationPage /></MainLayout></UserGuard>},
+  // Landing page (no authentication required)
+  { 
+    path: "/", 
+    element: (
+      <Suspense fallback={<div className="flex items-center justify-center h-screen"><div className="text-center"><div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto"></div><p className="mt-2">Loading...</p></div></div>}>
+        <App />
+      </Suspense>
+    ),
+    errorElement: <div className="flex items-center justify-center h-screen"><div className="text-center"><h2 className="text-2xl font-bold">Something went wrong</h2><p className="mt-2">We couldn't load the landing page. Please try again.</p></div></div>
+  },
+  { path: "/dashboard", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><DashboardPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/active-workout-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><ActiveWorkoutPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/activeworkoutpage", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><ActiveWorkoutPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/dashboard-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><DashboardPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/dashboardpage", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><DashboardPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/generating-workout-screen", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><GeneratingWorkoutScreen /></Suspense></MainLayout></UserGuard> },
+  { path: "/generatingworkoutscreen", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><GeneratingWorkoutScreen /></Suspense></MainLayout></UserGuard> },
+  { path: "/gym-finder-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><GymFinderPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/gymfinderpage", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><GymFinderPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/logout", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><Logout /></Suspense></MainLayout></UserGuard> },
+  { path: "/progress-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><ProgressPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/progresspage", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><ProgressPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/select-duration-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><SelectDurationPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/selectdurationpage", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><SelectDurationPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/select-gym-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><SelectGymPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/selectgympage", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><SelectGymPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/user-profile-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><UserProfilePage /></Suspense></MainLayout></UserGuard> },
+  { path: "/userprofilepage", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><UserProfilePage /></Suspense></MainLayout></UserGuard> },
+  { path: "/workout-details-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><WorkoutDetailsPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/workoutdetailspage", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><WorkoutDetailsPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/workout-recommendation-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><WorkoutRecommendationPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/workoutrecommendationpage", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><WorkoutRecommendationPage /></Suspense></MainLayout></UserGuard> },
 
-	// New pages for the navbar items
-	{ path: "/history", element: <UserGuard><MainLayout><HistoryPage /></MainLayout></UserGuard>},
-	{ path: "/settings", element: <UserGuard><MainLayout><UserProfilePage /></MainLayout></UserGuard>}, // Using UserProfile as placeholder for settings
-	{ path: "/community", element: <UserGuard><MainLayout><DashboardPage /></MainLayout></UserGuard>}, // Placeholder for Community page
-	{ path: "/explore", element: <UserGuard><MainLayout><Suspense fallback={<div className="flex items-center justify-center h-full p-8"><div className="text-center"><div className="animate-spin h-8 w-8 border-4 border-purple-500 border-t-transparent rounded-full mx-auto mb-4"></div><p className="text-gray-600">Loading Gym Finder...</p></div></div>}><GymFinderPage /></Suspense></MainLayout></UserGuard>},
-
+  // New pages for the navbar items
+  { path: "/history", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><HistoryPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/settings", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><UserProfilePage /></Suspense></MainLayout></UserGuard> }, // Using UserProfile as placeholder for settings
+  { path: "/community", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><DashboardPage /></Suspense></MainLayout></UserGuard> }, // Placeholder for Community page
+  { path: "/explore", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><GymFinderPage /></Suspense></MainLayout></UserGuard> },
 ];

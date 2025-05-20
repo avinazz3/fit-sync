@@ -132,8 +132,14 @@ const RAW_RUNTIME_STATE =
           ["@stripe/react-stripe-js", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:2.9.0"],\
           ["@stripe/stripe-js", "npm:5.0.0"],\
           ["@suiet/wallet-kit", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:0.3.3"],\
+          ["@supabase/auth-js", "npm:2.69.1"],\
           ["@supabase/auth-ui-react", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:0.4.7"],\
           ["@supabase/auth-ui-shared", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:0.1.8"],\
+          ["@supabase/functions-js", "npm:2.4.4"],\
+          ["@supabase/node-fetch", "npm:2.6.13"],\
+          ["@supabase/postgrest-js", "npm:1.19.4"],\
+          ["@supabase/realtime-js", "npm:2.11.7"],\
+          ["@supabase/storage-js", "npm:2.7.3"],\
           ["@supabase/supabase-js", "npm:2.49.5"],\
           ["@tailwindcss/typography", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:0.5.10"],\
           ["@talkjs/react", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:0.1.11"],\
@@ -26610,6 +26616,14 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["@supabase/node-fetch", [\
+      ["npm:2.6.13", {\
+        "packageLocation": "../../../.yarn/berry/cache/@supabase-node-fetch-npm-2.6.13-4dc870ec01-10c0.zip/node_modules/@supabase/node-fetch/",\
+        "packageDependencies": [\
+          ["@supabase/node-fetch", "npm:2.6.13"],\
+          ["whatwg-url", "npm:5.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:2.6.15", {\
         "packageLocation": "../../../.yarn/berry/cache/@supabase-node-fetch-npm-2.6.15-0ebc2aefaa-10c0.zip/node_modules/@supabase/node-fetch/",\
         "packageDependencies": [\
@@ -26640,6 +26654,17 @@ const RAW_RUNTIME_STATE =
           ["ws", "virtual:9c27dfe96ebffc0821427a8cd403b9e6fd1a9e6f227770f7685f1924c5c1e7f47a434b399146de16c0223949994b5b68ea7d66fcc5ba3d698fa921edec2f2fab#npm:8.18.0"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:2.11.7", {\
+        "packageLocation": "../../../.yarn/berry/cache/@supabase-realtime-js-npm-2.11.7-136408ed26-10c0.zip/node_modules/@supabase/realtime-js/",\
+        "packageDependencies": [\
+          ["@supabase/realtime-js", "npm:2.11.7"],\
+          ["@supabase/node-fetch", "npm:2.6.15"],\
+          ["@types/phoenix", "npm:1.6.6"],\
+          ["@types/ws", "npm:8.18.1"],\
+          ["ws", "virtual:9c27dfe96ebffc0821427a8cd403b9e6fd1a9e6f227770f7685f1924c5c1e7f47a434b399146de16c0223949994b5b68ea7d66fcc5ba3d698fa921edec2f2fab#npm:8.18.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@supabase/storage-js", [\
@@ -26647,6 +26672,14 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/@supabase-storage-js-npm-2.7.1-92ca6f0bb0-10c0.zip/node_modules/@supabase/storage-js/",\
         "packageDependencies": [\
           ["@supabase/storage-js", "npm:2.7.1"],\
+          ["@supabase/node-fetch", "npm:2.6.15"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:2.7.3", {\
+        "packageLocation": "../../../.yarn/berry/cache/@supabase-storage-js-npm-2.7.3-e9059a8293-10c0.zip/node_modules/@supabase/storage-js/",\
+        "packageDependencies": [\
+          ["@supabase/storage-js", "npm:2.7.3"],\
           ["@supabase/node-fetch", "npm:2.6.15"]\
         ],\
         "linkType": "HARD"\
@@ -32911,6 +32944,13 @@ const RAW_RUNTIME_STATE =
           ["@types/phoenix", "npm:1.6.5"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:1.6.6", {\
+        "packageLocation": "../../../.yarn/berry/cache/@types-phoenix-npm-1.6.6-b47f7364f0-10c0.zip/node_modules/@types/phoenix/",\
+        "packageDependencies": [\
+          ["@types/phoenix", "npm:1.6.6"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@types/picomatch", [\
@@ -33424,6 +33464,14 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/@types-ws-npm-7.4.7-d0c95c0958-10c0.zip/node_modules/@types/ws/",\
         "packageDependencies": [\
           ["@types/ws", "npm:7.4.7"],\
+          ["@types/node", "npm:22.4.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:8.18.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/@types-ws-npm-8.18.1-61dc106ff0-10c0.zip/node_modules/@types/ws/",\
+        "packageDependencies": [\
+          ["@types/ws", "npm:8.18.1"],\
           ["@types/node", "npm:22.4.1"]\
         ],\
         "linkType": "HARD"\
@@ -43722,8 +43770,14 @@ const RAW_RUNTIME_STATE =
           ["@stripe/react-stripe-js", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:2.9.0"],\
           ["@stripe/stripe-js", "npm:5.0.0"],\
           ["@suiet/wallet-kit", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:0.3.3"],\
+          ["@supabase/auth-js", "npm:2.69.1"],\
           ["@supabase/auth-ui-react", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:0.4.7"],\
           ["@supabase/auth-ui-shared", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:0.1.8"],\
+          ["@supabase/functions-js", "npm:2.4.4"],\
+          ["@supabase/node-fetch", "npm:2.6.13"],\
+          ["@supabase/postgrest-js", "npm:1.19.4"],\
+          ["@supabase/realtime-js", "npm:2.11.7"],\
+          ["@supabase/storage-js", "npm:2.7.3"],\
           ["@supabase/supabase-js", "npm:2.49.5"],\
           ["@tailwindcss/typography", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:0.5.10"],\
           ["@talkjs/react", "virtual:d14e96f51a2ef8995a8102083382a6e7f005fb01b211f94a92f756099b46b93d3904c2ecdde2174cf637243dc7594b7f3d2a08b0ead89db13be81ed167e2d547#npm:0.1.11"],\

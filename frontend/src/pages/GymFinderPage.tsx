@@ -94,14 +94,14 @@ const GymFinderPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100 p-3 sm:p-4 md:p-6 flex flex-col space-y-4 md:space-y-6">
-      <Card className="shadow-xl rounded-xl border border-gray-200/80 bg-white/80 backdrop-blur-md">
-        <CardHeader className="border-b pb-4">
-          <CardTitle className="text-2xl md:text-3xl font-bold flex items-center text-gray-800">
-            <MapPin className="w-7 h-7 mr-3 text-purple-600" />
+    <div className="min-h-screen bg-gray-900 p-3 sm:p-4 md:p-6 flex flex-col space-y-4 md:space-y-6">
+      <Card className="shadow-xl rounded-xl border border-gray-700 bg-gray-800 text-white backdrop-blur-md">
+        <CardHeader className="border-b border-gray-700 pb-4">
+          <CardTitle className="text-2xl md:text-3xl font-bold flex items-center text-white">
+            <MapPin className="w-7 h-7 mr-3 text-purple-400" />
             Find Your Gym
           </CardTitle>
-          <CardDescription className="text-md text-gray-600 mt-1">
+          <CardDescription className="text-md text-gray-400 mt-1">
             Discover gyms near you with the equipment you need.
           </CardDescription>
         </CardHeader>
@@ -112,19 +112,19 @@ const GymFinderPage = () => {
               <input 
                 type="text" 
                 placeholder="Search by name or area (simulated)" 
-                className="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-shadow shadow-sm text-sm sm:text-base"
+                className="w-full pl-11 pr-4 py-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-shadow shadow-sm text-sm sm:text-base placeholder:text-gray-400"
               />
             </div>
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="flex items-center gap-2 border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors shadow-sm rounded-lg py-3 text-sm sm:text-base w-full sm:w-auto justify-center">
+                <Button variant="outline" className="flex items-center gap-2 border-gray-600 text-gray-300 hover:bg-gray-700 transition-colors shadow-sm rounded-lg py-3 text-sm sm:text-base w-full sm:w-auto justify-center">
                   <Filter size={18} /> Filters {activeSelectedEquipmentIds.length > 0 && `(${activeSelectedEquipmentIds.length})`}
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-64 bg-white p-2 shadow-lg rounded-md border">
-                <DropdownMenuLabel className="px-2 py-1.5 font-semibold text-gray-700">Filter by Equipment</DropdownMenuLabel>
-                <DropdownMenuSeparator className="my-1" />
+              <DropdownMenuContent className="w-64 bg-gray-800 p-2 shadow-lg rounded-md border border-gray-700 text-white">
+                <DropdownMenuLabel className="px-2 py-1.5 font-semibold text-gray-300">Filter by Equipment</DropdownMenuLabel>
+                <DropdownMenuSeparator className="my-1 bg-gray-700" />
                 <DropdownMenuGroup className="max-h-60 overflow-y-auto">
                   {allUniqueEquipment.map(equip => (
                     <DropdownMenuCheckboxItem
@@ -135,13 +135,13 @@ const GymFinderPage = () => {
                           checked ? [...prev, equip.id] : prev.filter(id => id !== equip.id)
                         );
                       }}
-                      className="text-sm text-gray-700 hover:bg-gray-100 rounded-sm data-[state=checked]:bg-purple-50 data-[state=checked]:text-purple-700"
+                      className="text-sm text-gray-300 hover:bg-gray-700 rounded-sm data-[state=checked]:bg-purple-900/50 data-[state=checked]:text-purple-400"
                     >
                       {equip.name}
                     </DropdownMenuCheckboxItem>
                   ))}
                 </DropdownMenuGroup>
-                <DropdownMenuSeparator className="my-1"/>
+                <DropdownMenuSeparator className="my-1 bg-gray-700"/>
                 <DropdownMenuGroup>
                     <DropdownMenuItem 
                         onClick={handleApplyFilters} 
@@ -164,16 +164,16 @@ const GymFinderPage = () => {
             <Button 
               variant={isListView ? "default" : "outline"} 
               onClick={() => setIsListView(!isListView)}
-              className="flex items-center gap-2 border-gray-300 text-gray-700 data-[state=checked]:bg-purple-600 data-[state=checked]:text-white hover:bg-gray-50 data-[state=checked]:hover:bg-purple-700 transition-colors shadow-sm rounded-lg py-3 text-sm sm:text-base w-full sm:w-auto justify-center"
+              className="flex items-center gap-2 border-gray-600 text-gray-300 data-[state=checked]:bg-purple-600 data-[state=checked]:text-white hover:bg-gray-700 data-[state=checked]:hover:bg-purple-700 transition-colors shadow-sm rounded-lg py-3 text-sm sm:text-base w-full sm:w-auto justify-center"
             >
               {isListView ? <MapPin size={18} /> : <List size={18} />} {isListView ? "Map View" : "List View"}
             </Button>
           </div>
 
           {filteredGymsToDisplay.length === 0 && activeSelectedEquipmentIds.length > 0 && (
-            <div className="text-center py-10 text-gray-500">
+            <div className="text-center py-10 text-gray-400">
               <Sparkles size={32} className="mx-auto mb-2 text-purple-400" />
-              <p className="font-semibold text-lg">No gyms match your selected equipment.</p>
+              <p className="font-semibold text-lg text-white">No gyms match your selected equipment.</p>
               <p className="text-sm">Try adjusting your filters or clearing them to see all available gyms.</p>
             </div>
           )}
@@ -182,21 +182,21 @@ const GymFinderPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-4">
               {filteredGymsToDisplay.map(gym => (
                 <DialogTrigger asChild key={gym.id} onClick={() => setSelectedGym(gym)}>
-                  <Card className="hover:shadow-lg transition-shadow cursor-pointer rounded-lg border border-gray-200/70 overflow-hidden bg-white flex flex-col">
+                  <Card className="hover:shadow-lg transition-shadow cursor-pointer rounded-lg border border-gray-700 overflow-hidden bg-gray-800 text-white flex flex-col">
                     {gym.imageUrl && (
                         <div className="h-40 w-full overflow-hidden">
                             <img src={gym.imageUrl} alt={gym.name} className="w-full h-full object-cover transition-transform hover:scale-105" />
                         </div>
                     )}
                     <CardHeader className="pb-2 pt-4 px-4">
-                      <CardTitle className="text-lg font-semibold text-gray-800 hover:text-purple-600 transition-colors">{gym.name}</CardTitle>
+                      <CardTitle className="text-lg font-semibold text-white hover:text-purple-400 transition-colors">{gym.name}</CardTitle>
                       <StarRating rating={gym.rating} />
                     </CardHeader>
-                    <CardContent className="text-xs text-gray-500 space-y-1.5 px-4 pb-3 pt-1 flex-grow">
-                      <p className="flex items-center"><MapPin size={14} className="mr-1.5 text-gray-400" /> {gym.address}</p>
-                      <p className="flex items-center"><Clock size={14} className="mr-1.5 text-gray-400" /> {gym.simulatedTravelTime}</p>
+                    <CardContent className="text-xs text-gray-400 space-y-1.5 px-4 pb-3 pt-1 flex-grow">
+                      <p className="flex items-center"><MapPin size={14} className="mr-1.5 text-gray-500" /> {gym.address}</p>
+                      <p className="flex items-center"><Clock size={14} className="mr-1.5 text-gray-500" /> {gym.simulatedTravelTime}</p>
                       {gym.equipment.length > 0 && (
-                        <p className="flex items-center"><Sparkles size={14} className="mr-1.5 text-gray-400" /> 
+                        <p className="flex items-center"><Sparkles size={14} className="mr-1.5 text-gray-500" /> 
                           {gym.equipment.slice(0,2).map(e => e.name).join(", ")}
                           {gym.equipment.length > 2 ? ` & ${gym.equipment.length-2} more...` : ''}
                         </p>

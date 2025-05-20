@@ -52,32 +52,33 @@ export default function Login() {
 
   if (isLoading && !error) {
     return (
-      <div className="flex items-center justify-center h-screen bg-background">
+      <div className="flex items-center justify-center h-screen bg-gray-900">
         <div className="flex flex-col items-center">
-          <Loader2 className="h-10 w-10 text-primary animate-spin" />
-          <p className="mt-4 text-lg">Loading...</p>
+          <Loader2 className="h-10 w-10 text-purple-500 animate-spin" />
+          <p className="mt-4 text-lg text-white">Loading...</p>
         </div>
       </div>
     );
   }
   
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4">
-      <div className="w-full max-w-md p-6 bg-card shadow-lg rounded-xl">
-        <div className="flex justify-center mb-6">
-          <Target className="h-8 w-8 text-primary" />
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 p-4">
+      <div className="w-full max-w-md p-6 bg-gray-800 text-white shadow-xl rounded-xl border border-gray-700">
+        <div className="flex flex-col items-center justify-center mb-6">
+          <Target className="h-8 w-8 text-purple-400 mb-2" />
+          <h2 className="text-xl font-bold text-purple-400">Wellnash</h2>
         </div>
-        <h1 className="text-2xl font-bold text-center mb-2">
+        <h1 className="text-2xl font-bold text-center mb-2 text-white">
           {isSignUp ? "Create your account" : "Welcome back"}
         </h1>
-        <p className="text-muted-foreground text-center mb-6">
+        <p className="text-gray-400 text-center mb-6">
           {isSignUp 
-            ? "Sign up to get personalized workout plans" 
-            : "Sign in to access your fitness dashboard"}
+            ? "Sign up to get personalized wellness plans" 
+            : "Sign in to access your wellness dashboard"}
         </p>
 
         {error && (
-          <div className="bg-destructive/20 text-destructive p-3 rounded-md flex items-center mb-6">
+          <div className="bg-red-900/30 text-red-400 p-3 rounded-md flex items-center mb-6 border border-red-800">
             <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0" />
             <span>{error}</span>
           </div>
@@ -85,7 +86,7 @@ export default function Login() {
         
         <form onSubmit={handleAuth} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email" className="text-gray-300">Email</Label>
             <Input 
               id="email" 
               type="email" 
@@ -93,10 +94,11 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:ring-purple-500 focus:border-purple-500"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" className="text-gray-300">Password</Label>
             <Input 
               id="password" 
               type="password" 
@@ -105,11 +107,12 @@ export default function Login() {
               onChange={(e) => setPassword(e.target.value)}
               required
               minLength={8}
+              className="bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 focus:ring-purple-500 focus:border-purple-500"
             />
           </div>
           <Button 
             type="submit" 
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" 
+            className="w-full bg-purple-600 hover:bg-purple-700 text-white" 
             disabled={isLoading}
           >
             {isLoading ? (
@@ -123,13 +126,13 @@ export default function Login() {
           </Button>
         </form>
 
-        <div className="mt-6 text-center text-sm">
+        <div className="mt-6 text-center text-sm text-gray-400">
           {isSignUp ? (
             <p>
               Already have an account?{" "}
               <Button 
                 variant="link" 
-                className="p-0 h-auto font-semibold" 
+                className="p-0 h-auto font-semibold text-purple-400 hover:text-purple-300" 
                 onClick={() => navigate("/login")}>
                 Sign in
               </Button>
@@ -139,7 +142,7 @@ export default function Login() {
               Don't have an account?{" "}
               <Button 
                 variant="link" 
-                className="p-0 h-auto font-semibold" 
+                className="p-0 h-auto font-semibold text-purple-400 hover:text-purple-300" 
                 onClick={() => navigate("/login?signup=true")}>
                 Create an account
               </Button>
