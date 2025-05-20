@@ -20,6 +20,7 @@ import {
   Trophy,
   Dumbbell,
 } from "lucide-react"
+import { AnimatedBackground } from "./components/animated-background"
 import { format, isSameDay, subDays } from "date-fns"
 import { Line, LineChart, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts"
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
@@ -339,18 +340,29 @@ const HistoryPage = () => {
 
   if (isLoading) {
     return (
-      <div className="p-6 bg-gray-900 min-h-screen flex flex-col items-center justify-center">
-        <Activity className="w-12 h-12 text-purple-500 animate-spin mb-4" />
-        <p className="text-xl font-medium text-white">Loading workout history...</p>
+      <div className="p-6 bg-black min-h-screen flex flex-col items-center justify-center relative">
+        {/* Background gradient */}
+        <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-cyan-900/10 z-0 pointer-events-none" />
+        <div className="relative z-10">
+          <Activity className="w-12 h-12 text-purple-500 animate-spin mb-4" />
+          <p className="text-xl font-medium text-white">Loading workout history...</p>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="p-6 bg-gray-900 min-h-screen text-gray-100">
+    <div className="p-6 bg-black min-h-screen text-gray-100 relative">
+      {/* Animated background */}
+      <AnimatedBackground type="particles" opacity={0.2} speed={0.8} />
+      
+      {/* Background gradient */}
+      <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-cyan-900/10 z-0 pointer-events-none" />
+      
+      <div className="relative z-10">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-white">Workout History</h1>
-        <p className="text-gray-400 mt-1">Track your progress and achievements</p>
+        <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400">Workout History</h1>
+        <p className="text-gray-400 mt-2">Track your progress and achievements</p>
       </header>
 
       {/* Achievements Section - Now at the top */}
@@ -668,6 +680,7 @@ const HistoryPage = () => {
           </div>
         </TabsContent>
       </Tabs>
+          </div>
     </div>
   )
 }

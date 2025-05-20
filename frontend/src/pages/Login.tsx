@@ -52,8 +52,9 @@ export default function Login() {
 
   if (isLoading && !error) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gray-900">
-        <div className="flex flex-col items-center">
+      <div className="flex items-center justify-center h-screen bg-black">
+        <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-cyan-900/10 z-0 pointer-events-none" />
+        <div className="flex flex-col items-center relative z-10">
           <Loader2 className="h-10 w-10 text-purple-500 animate-spin" />
           <p className="mt-4 text-lg text-white">Loading...</p>
         </div>
@@ -62,11 +63,14 @@ export default function Login() {
   }
   
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 p-4">
-      <div className="w-full max-w-md p-6 bg-gray-800 text-white shadow-xl rounded-xl border border-gray-700">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black p-4 relative">
+      {/* Background gradient */}
+      <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-cyan-900/10 z-0 pointer-events-none" />
+      
+      <div className="w-full max-w-md p-6 bg-gray-800/60 text-white shadow-[0_0_15px_rgba(139,92,246,0.15)] backdrop-blur-sm rounded-xl border border-gray-700 relative z-10">
         <div className="flex flex-col items-center justify-center mb-6">
           <Target className="h-8 w-8 text-purple-400 mb-2" />
-          <h2 className="text-xl font-bold text-purple-400">Wellnash</h2>
+          <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400">Wellnash</h2>
         </div>
         <h1 className="text-2xl font-bold text-center mb-2 text-white">
           {isSignUp ? "Create your account" : "Welcome back"}

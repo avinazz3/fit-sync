@@ -94,8 +94,10 @@ const GymFinderPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 p-3 sm:p-4 md:p-6 flex flex-col space-y-4 md:space-y-6">
-      <Card className="shadow-xl rounded-xl border border-gray-700 bg-gray-800 text-white backdrop-blur-md">
+    <div className="min-h-screen bg-black p-3 sm:p-4 md:p-6 flex flex-col space-y-4 md:space-y-6 relative">
+      {/* Background gradient */}
+      <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-cyan-900/10 z-0 pointer-events-none" />
+      <Card className="shadow-xl rounded-xl border border-gray-700 bg-gray-800/60 text-white backdrop-blur-sm relative z-10 shadow-[0_0_15px_rgba(139,92,246,0.15)]">
         <CardHeader className="border-b border-gray-700 pb-4">
           <CardTitle className="text-2xl md:text-3xl font-bold flex items-center text-white">
             <MapPin className="w-7 h-7 mr-3 text-purple-400" />

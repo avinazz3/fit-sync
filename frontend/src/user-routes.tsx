@@ -19,7 +19,9 @@ const LoadingFallback = () => (
 
 const ActiveWorkoutPage = lazy(() => import("./pages/ActiveWorkoutPage.tsx"));
 const App = lazy(() => import("./pages/App.tsx"));
+const CommunityPage = lazy(() => import("./pages/CommunityPage.tsx"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage.tsx"));
+const ExplorePage = lazy(() => import("./pages/ExplorePage.tsx"));
 const GeneratingWorkoutScreen = lazy(() => import("./pages/GeneratingWorkoutScreen.tsx"));
 const GymFinderPage = lazy(() => import("./pages/GymFinderPage.tsx"));
 const Login = lazy(() => import("./pages/Login.tsx"));
@@ -76,6 +78,6 @@ export const userRoutes: RouteObject[] = [
   // New pages for the navbar items
   { path: "/history", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><HistoryPage /></Suspense></MainLayout></UserGuard> },
   { path: "/settings", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><UserProfilePage /></Suspense></MainLayout></UserGuard> }, // Using UserProfile as placeholder for settings
-  { path: "/community", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><DashboardPage /></Suspense></MainLayout></UserGuard> }, // Placeholder for Community page
-  { path: "/explore", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><GymFinderPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/community", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><CommunityPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/explore", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><ExplorePage /></Suspense></MainLayout></UserGuard> },
 ];

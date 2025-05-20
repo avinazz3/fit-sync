@@ -15,7 +15,7 @@ const navItems = [
   { path: "/history", label: "History", icon: History },
   { path: "/settings", label: "Settings", icon: Settings },
   { path: "/community", label: "Community", icon: Users },
-  { path: "/explore", label: "Gym Finder", icon: MapPin },
+  { path: "/explore", label: "Explore", icon: MapPin },
 ]
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
