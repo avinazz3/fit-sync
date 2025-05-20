@@ -53,6 +53,7 @@ export const userRoutes: RouteObject[] = [
     errorElement: <div className="flex items-center justify-center h-screen"><div className="text-center"><h2 className="text-2xl font-bold">Something went wrong</h2><p className="mt-2">We couldn't load the landing page. Please try again.</p></div></div>
   },
   { path: "/dashboard", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><DashboardPage /></Suspense></MainLayout></UserGuard> },
+  { path: "/active-workout", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><ActiveWorkoutPage /></Suspense></MainLayout></UserGuard> },
   { path: "/active-workout-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><ActiveWorkoutPage /></Suspense></MainLayout></UserGuard> },
   { path: "/activeworkoutpage", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><ActiveWorkoutPage /></Suspense></MainLayout></UserGuard> },
   { path: "/dashboard-page", element: <UserGuard><MainLayout><Suspense fallback={<LoadingFallback />}><DashboardPage /></Suspense></MainLayout></UserGuard> },

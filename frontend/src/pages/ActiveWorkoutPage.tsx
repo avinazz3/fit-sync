@@ -8,6 +8,7 @@ import { saveWorkoutSession, generateUniqueId, getWorkoutSessionById, getAllWork
 import { Toaster, toast } from "sonner";
 import { useNavigate, useParams } from "react-router-dom";
 import { ChevronLeft, PlusCircle, CheckCircle2, XCircle, Edit3, Trash2, Timer, Calculator, Play, Pause, SkipForward } from "lucide-react";
+import { AnimatedBackground } from "./components/animated-background";
 
 // Mock data for a generated workout plan - this would normally come from props or a state management solution
 const MOCK_GENERATED_WORKOUT_ID = "mock-plan-123";
@@ -182,26 +183,39 @@ const ActiveWorkoutPage = () => {
     saveWorkoutSession(finishedSession);
     setIsTimerRunning(false);
     toast.success("Workout Finished & Saved!");
-    navigate("/"); // Navigate to dashboard or workout history
+    navigate("/dashboard"); // Navigate to dashboard
   };
 
   if (!activeSession) {
-    return <div className="p-8 text-center">Loading workout...</div>; // Or a proper loader
+    return (
+      <div className="min-h-screen bg-black p-8 flex items-center justify-center relative">
+        {/* Background gradient */}
+        <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-cyan-900/10 z-0 pointer-events-none" />
+        <div className="text-white text-center text-xl font-semibold relative z-10">Loading workout...</div>
+      </div>
+    );
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex flex-col p-4 sm:p-6 md:p-8">
+    <div className="min-h-screen bg-black text-white flex flex-col p-4 sm:p-6 md:p-8 relative">
+      {/* Animated background */}
+      <AnimatedBackground type="particles" opacity={0.2} speed={0.8} />
+      
+      {/* Background gradient */}
+      <div className="fixed inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-cyan-900/10 z-0 pointer-events-none" />
+      
+      <div className="relative z-10 flex flex-col flex-grow">
       <Toaster richColors position="top-center" />
       {/* Header */}
       <header className="flex items-center justify-between mb-6">
         <Button variant="ghost" size="icon" onClick={() => navigate(-1)} className="text-gray-300 hover:text-white">
           <ChevronLeft size={28} />
         </Button>
-        <div className="flex items-center space-x-2 bg-gray-800 px-3 py-2 rounded-md">
+        <div className="flex items-center space-x-2 bg-gray-800/60 backdrop-blur-sm px-3 py-2 rounded-md border border-gray-700 shadow-[0_0_15px_rgba(139,92,246,0.15)]">
             {isTimerRunning ? <Play size={20} className="text-green-400"/> : <Pause size={20} className="text-yellow-400"/>}
             <span className="font-mono text-xl">{formatTime(sessionTimer)}</span>
         </div>
-        <Button onClick={handleFinishWorkout} className="bg-purple-600 hover:bg-purple-700 text-white font-semibold px-6 py-2.5 rounded-lg">
+        <Button onClick={handleFinishWorkout} className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg">
           Finish
         </Button>
       </header>
@@ -209,10 +223,10 @@ const ActiveWorkoutPage = () => {
       {/* Exercises List */}
       <main className="flex-grow space-y-6 overflow-y-auto pb-20"> {/* Added pb for footer */}
         {activeSession.exercises.map((exercise, exIdx) => (
-          <Card key={exercise.id} className="bg-gray-800 border-gray-700 shadow-xl rounded-lg overflow-hidden">
-            <CardHeader className="p-4 border-b border-gray-700">
+          <Card key={exercise.id} className="bg-gray-800/60 border-gray-700 shadow-[0_0_15px_rgba(139,92,246,0.15)] backdrop-blur-sm rounded-lg overflow-hidden">
+            <CardHeader className="p-4 border-b border-gray-700 bg-gradient-to-r from-gray-800/80 to-gray-900/80">
               <div className="flex justify-between items-center">
-                <h3 className="text-sm font-semibold text-orange-400 tracking-wide">
+                <h3 className="text-sm font-semibold text-purple-400 tracking-wide">
                   {exercise.exerciseName} {/* e.g. 1A Overhead Press (Barbell) */}
                 </h3>
                 {/* Placeholder for icons like swap, info */}
@@ -225,7 +239,7 @@ const ActiveWorkoutPage = () => {
                 {exercise.exerciseDetail} {/* e.g. BB or DB Overhead Press */}
               </CardTitle>
               {exercise.byNaturalHypertrophy && (
-                <p className="text-xs text-gray-400 mt-0.5">{exercise.byNaturalHypertrophy}</p>
+                <p className="text-xs text-blue-400 mt-0.5">{exercise.byNaturalHypertrophy}</p>
               )}
             </CardHeader>
             <CardContent className="p-0">
@@ -242,7 +256,7 @@ const ActiveWorkoutPage = () => {
               {exercise.performedSets.map((pSet, setIdx) => {
                 const plannedSet = exercise.plannedSets[setIdx] || { targetRepsDisplay: "-", previousPerformanceDisplay: "-" }; // Fallback if performedSets > plannedSets
                 return (
-                  <div key={pSet.id} className={`grid grid-cols-12 gap-x-2 px-4 py-3 items-center border-b border-gray-700 last:border-b-0 ${pSet.completed ? 'bg-green-900/30' : 'hover:bg-gray-700/50'}`}>
+                  <div key={pSet.id} className={`grid grid-cols-12 gap-x-2 px-4 py-3 items-center border-b border-gray-700 last:border-b-0 ${pSet.completed ? 'bg-gradient-to-r from-green-900/40 to-emerald-900/20' : 'hover:bg-gray-700/30'} transition-colors duration-200`}>
                     <div className="col-span-1 text-sm font-medium text-gray-300">{setIdx + 1}</div>
                     <div className="col-span-4 text-sm text-gray-400 truncate" title={plannedSet.previousPerformanceDisplay}>{plannedSet.previousPerformanceDisplay}</div>
                     <div className="col-span-3 text-sm text-gray-400 truncate" title={plannedSet.targetRepsDisplay}>{plannedSet.targetRepsDisplay}</div>
@@ -279,8 +293,8 @@ const ActiveWorkoutPage = () => {
               })}
             </CardContent>
             <CardFooter className="p-4 border-t border-gray-700">
-              <Button variant="outline" onClick={() => handleAddSet(exercise.id)} className="w-full border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white">
-                <PlusCircle size={18} className="mr-2" /> Add Set
+              <Button variant="outline" onClick={() => handleAddSet(exercise.id)} className="w-full border-gray-600 text-gray-300 hover:bg-purple-900/50 hover:border-purple-500 hover:text-white transition-all duration-200">
+                <PlusCircle size={18} className="mr-2 text-purple-400" /> Add Set
               </Button>
             </CardFooter>
           </Card>
@@ -288,15 +302,16 @@ const ActiveWorkoutPage = () => {
       </main>
 
       {/* Sticky Footer - Placeholder for timer/plate calculator */}
-      <footer className="fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-700 p-3 flex justify-around items-center shadow-lg_inverted z-10">
-        <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
-          <Timer size={18} className="mr-2" /> Rest Timer
+      <footer className="fixed bottom-0 left-0 right-0 bg-gray-800/80 backdrop-blur-sm border-t border-gray-700 p-3 flex justify-around items-center shadow-[0_-4px_10px_rgba(0,0,0,0.25)] z-10">
+        <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-purple-800/50 transition-colors duration-200">
+          <Timer size={18} className="mr-2 text-purple-400" /> Rest Timer
         </Button>
         {/* Spacer or more buttons */}
-        <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-700">
-          <Calculator size={18} className="mr-2" /> Plate Calculator
+        <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-blue-800/50 transition-colors duration-200">
+          <Calculator size={18} className="mr-2 text-blue-400" /> Plate Calculator
         </Button>
       </footer>
+      </div>
     </div>
   );
 };

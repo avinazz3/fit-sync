@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -27,6 +28,7 @@ const currentProgram = {
 }
 
 const DashboardPage = () => {
+  const navigate = useNavigate()
   const [duration, setDuration] = useState("60")
   const [gymType, setGymType] = useState("full")
 
@@ -169,7 +171,10 @@ const DashboardPage = () => {
                   )}
                 </div>
 
-                <Button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 border-0 text-white">
+                <Button 
+                  onClick={() => navigate("/active-workout")} 
+                  className="w-full mt-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 border-0 text-white"
+                >
                   Start Workout
                 </Button>
               </div>
@@ -244,7 +249,10 @@ const DashboardPage = () => {
               </div>
             </div>
 
-            <Button className="mt-6 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0">
+            <Button 
+              onClick={() => navigate("/active-workout")} 
+              className="mt-6 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0"
+            >
               Generate Workout
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
