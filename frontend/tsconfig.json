@@ -54,8 +54,9 @@
       ],
       "@/components/ui/*": [
         "./src/extensions/shadcn/components/*"
-      ],
-    }
+      ]
+    },
+    "types": []
   },
   "include": [
     "env.d.ts",

@@ -16,4 +16,12 @@ export const firestore = getFirestore(firebaseApp);
 export const firebaseDb = firestore; // @deprecated
 
 // Export the firebase storage instance
-export const firebaseStorage = getStorage(firebaseApp);
+let storageInstance;
+try {
+  storageInstance = getStorage(firebaseApp);
+} catch (e) {
+  console.warn("Firebase storage is not available:", e.message);
+  storageInstance = undefined;
+}
+export const firebaseStorage = storageInstance;
+
