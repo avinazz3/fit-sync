@@ -11,9 +11,9 @@ export const firebaseApp: FirebaseApp = initializeApp(config.firebaseConfig);
 export const firebaseAuth = getAuth(firebaseApp);
 
 // Export the firebase firestore instance
-export const firestore = getFirestore(firebaseApp);
+// export const firestore = getFirestore(firebaseApp);
 // This is deprecated, use firestore instead, that's what gemini is guessing 9/10 times
-export const firebaseDb = firestore; // @deprecated
+// export const firebaseDb = firestore; // @deprecated
 
 // Export the firebase storage instance
 let storageInstance;
