@@ -22,6 +22,37 @@ def is_auth_disabled(router_config: dict, name: str) -> bool:
     return router_config["routers"][name]["disableAuth"]
 
 
+from typing import List, Optional
+from supabase import Client
+
+def get_training_records(supabase: Client, trainer_id: Optional[str] = None) -> List[dict]:
+    query = supabase.table("training").select("*")
+    if trainer_id:
+        query = query.eq("trainer_id", trainer_id)
+    return query.execute().data
+
+def get_training_by_id(supabase: Client, training_id: str) -> Optional[dict]:
+    result = supabase.table("training").select("*").eq("id", training_id).single().execute()
+    return result.data
+
+def create_training_entry(
+    supabase: Client, trainer_id: str, trainee_id: str, program_id: str
+) -> dict:
+    new_entry = {
+        "trainer_id": trainer_id,
+        "trainee_id": trainee_id,
+        "program_id": program_id,
+    }
+    return supabase.table("training").insert(new_entry).execute().data[0]
+
+def get_programs(supabase: Client) -> List[dict]:
+    return supabase.table("programs").select("*").execute().data
+
+def get_program_by_id(supabase: Client, program_id: str) -> Optional[dict]:
+    result = supabase.table("programs").select("*").eq("id", program_id).single().execute()
+    return result.data
+
+
 def import_api_routers() -> APIRouter:
     """Create top level router including all user defined endpoints."""
     routes = APIRouter(prefix="/routes")
